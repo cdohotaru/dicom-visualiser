@@ -3,7 +3,7 @@ import * as constants from "../utils/constants";
 import * as utils from "../utils/utils";
 
 let initialState = {
-    instances: [],
+    images: [],
     selected: null
 }
 
@@ -11,11 +11,8 @@ export default function instancesReducer(state = initialState, action) {
     let temp, index;
     switch (action.type) {
         case types.GET_PATIENT_INSTANCES_SUCCESS:
-            temp = [...action.data];
-
-            return {
-                ...temp, selected: null
-            };
+            const toReturn = { ...state, images: action.data }
+            return toReturn;
         default:
             return state;
     }

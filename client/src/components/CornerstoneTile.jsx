@@ -42,8 +42,8 @@ cornerstoneWadoImageLoader.webWorkerManager.initialize(config);
 
 
 const divStyle = {
-  width: "512px",
-  height: "512px",
+  width: "200px",
+  height: "200px",
   position: "relative",
   color: "white"
 };

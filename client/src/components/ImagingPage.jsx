@@ -4,11 +4,27 @@ import { bindActionCreators } from "redux";
 
 import { withStyles } from "@material-ui/core/styles";
 
-import CornerstoneTile from "./CornerstoneTile";
+import Carousel from "./Carousel";
 
 import * as instancesActions from "../actions/instancesActions";
 
 const styles = () => ({
+    root: {
+        display: "flex",
+        flexDirection: "row",
+    },
+    imageViewerContainer: {
+        minWidth: "500px",
+        minHeight: "500px",
+        marginLeft: "20px",
+        backgroundColor: "red"
+    },
+    carouselContainer: {
+        minWidth: "300px",
+        height: "1000px",
+        // backgroundColor: "green",
+        overflow: "auto"
+    },
     runButton: {
         minWidth: "140px",
     },
@@ -44,11 +60,26 @@ export class ImagingPage extends React.Component {
         return null;
     }
 
+    renderCarousel = () => {
+        console.log("Instances: ", this.props.instances.images);
+
+        return <Carousel instances={this.props.instances.images}></Carousel>
+    }
+
+    renderImagesViewer = () => {
+        return <div>Image viewer</div>
+    }
+
     render() {
-        return <div>
-            <div>
+        const { classes } = this.props;
+
+        return <div className={classes.root}>
+            <div className={classes.carouselContainer}>
                 {this.renderNoStudy()}
-                <CornerstoneTile imageId={"7969c8f3-1ce35009-2ad17439-ba1e5e65-45b53bfb"} />
+                {this.renderCarousel()}
+            </div>
+            <div className={classes.imageViewerContainer}>
+                {this.renderImagesViewer()}
             </div>
         </div>
     }
@@ -57,7 +88,8 @@ export class ImagingPage extends React.Component {
 function mapStateToProps(state) {
     return {
         patients: state.patients,
-        studies: state.studies
+        studies: state.studies,
+        instances: state.instances
     };
 }
 
