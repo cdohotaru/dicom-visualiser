@@ -8,11 +8,13 @@ import Carousel from "./Carousel";
 import ImageViewer from "./ImageViewer";
 
 import * as instancesActions from "../actions/instancesActions";
+import { Paper } from '@material-ui/core';
 
 const styles = () => ({
-    root: {
+    bottomContainer: {
         display: "flex",
         flexDirection: "row",
+        marginTop: "20px"
     },
     imageViewerContainer: {
         minWidth: "1000px",
@@ -29,6 +31,11 @@ const styles = () => ({
     },
     marginLeft: {
         marginLeft: "20px"
+    },
+    patientDetailsContainer: {
+        margin: "0 10px 10px 10px",
+        padding: "10px",
+        lineHeight: "1"
     }
 });
 
@@ -85,17 +92,48 @@ export class ImagingPage extends React.Component {
         return <ImageViewer instance={selectedInstance}></ImageViewer>
     }
 
+    renderPatient = () => {
+        if (this.props.studies.selected === null) {
+            return null;
+        }
+
+        const { classes } = this.props;
+        const patient = this.props.patients.filter(patient => patient.id === this.props.studies.selected)[0];
+
+
+        return <div>
+            <p><b>Patient details</b></p>
+            <Paper
+                elevation={3}>
+                <div className={classes.patientDetailsContainer}>
+                    <p>Name: {patient.name}</p>
+                    <p>ID: {patient.id}</p>
+                    <p>Last update: {patient.lastUpdate}</p>
+                    <p>Sex: {patient.sex ? patient.sex : "not set"}</p>
+                    <p>Birth date: {patient.birthDate ? patient.birthDate : "not set"}</p>
+                    <p>Study id: {patient.studyId}</p>
+                </div>
+            </Paper>
+        </div>
+    }
+
     render() {
         const { classes } = this.props;
 
-        return <div className={classes.root}>
-            <div className={classes.carouselContainer}>
-                {this.renderNoStudy()}
-                {this.renderCarousel()}
+        return <div >
+            <div>
+                {this.renderPatient()}
             </div>
-            <div className={classes.imageViewerContainer}>
-                {this.renderImagesViewer()}
+            <div className={classes.bottomContainer}>
+                <div className={classes.carouselContainer}>
+                    {this.renderNoStudy()}
+                    {this.renderCarousel()}
+                </div>
+                <div className={classes.imageViewerContainer}>
+                    {this.renderImagesViewer()}
+                </div>
             </div>
+
         </div>
     }
 }
