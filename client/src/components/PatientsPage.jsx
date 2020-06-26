@@ -79,9 +79,9 @@ export class PatientsPage extends React.Component {
 
     render() {
         return <div>
-            <div>
+            {/* <div>
                 <CornerstoneTile imageId={"7969c8f3-1ce35009-2ad17439-ba1e5e65-45b53bfb"} />
-            </div>
+            </div> */}
             <div>
                 <PatientsTable
                     data={this.state.patients}

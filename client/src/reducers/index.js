@@ -4,11 +4,13 @@ import * as actionTypes from "../actions/actionTypes";
 
 import patients from "./patientsReducer";
 import studies from "./studiesReducer";
+import instances from "./instancesReducer";
 
 export default function createReducer() {
     const combinedReducers = combineReducers({
         patients,
-        studies
+        studies,
+        instances
     });
 
     return (state, action) => {

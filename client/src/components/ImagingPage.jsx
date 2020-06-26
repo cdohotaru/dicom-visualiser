@@ -6,7 +6,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 import CornerstoneTile from "./CornerstoneTile";
 
-import * as patientActions from "../actions/patientActions";
+import * as instancesActions from "../actions/instancesActions";
 
 const styles = () => ({
     runButton: {
@@ -32,6 +32,9 @@ export class ImagingPage extends React.Component {
     }
 
     componentDidMount() {
+        if (this.props.studies && this.props.studies.selected) {
+            this.props.actions.getInstancesForPatientId(this.props.studies.selected);
+        }
     }
 
     renderNoStudy = () => {
@@ -62,7 +65,7 @@ function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators(Object.assign(
             {},
-            patientActions
+            instancesActions
         ), dispatch)
     };
 }

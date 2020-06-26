@@ -17,20 +17,3 @@ export const getPatientIds = () => (dispatch) => {
         });
     });
 }
-
-export const getPatientWithId = (id) => (dispatch) => {
-
-    OrthancClient.getPatient(id).then(
-        result => {
-            dispatch({
-                type: types.GET_PATIENT_WITH_ID_SUCCESS,
-                data: result
-            });
-        }
-    ).catch(error => {
-        dispatch({
-            type: types.GET_PATIENT_WITH_ID_ERROR,
-            data: error
-        });
-    });
-}
