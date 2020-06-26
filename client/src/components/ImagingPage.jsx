@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import { withStyles } from "@material-ui/core/styles";
 
 import Carousel from "./Carousel";
+import ImageViewer from "./ImageViewer";
 
 import * as instancesActions from "../actions/instancesActions";
 
@@ -17,12 +18,10 @@ const styles = () => ({
         minWidth: "500px",
         minHeight: "500px",
         marginLeft: "20px",
-        backgroundColor: "red"
     },
     carouselContainer: {
         minWidth: "300px",
         height: "1000px",
-        // backgroundColor: "green",
         overflow: "auto"
     },
     runButton: {
@@ -53,6 +52,11 @@ export class ImagingPage extends React.Component {
         }
     }
 
+    onTileClickHandler = (id) => {
+        console.log("IP: ", id);
+        this.props.actions.selectInstance(id);
+    }
+
     renderNoStudy = () => {
         if (this.props.studies.selected === null) {
             return <p>No study selected. Please select a study first.</p>
@@ -61,13 +65,24 @@ export class ImagingPage extends React.Component {
     }
 
     renderCarousel = () => {
+        if (this.props.studies.selected === null) {
+            return null;
+        }
         console.log("Instances: ", this.props.instances.images);
 
-        return <Carousel instances={this.props.instances.images}></Carousel>
+        return <Carousel
+            instances={this.props.instances.images}
+            onClickHandler={this.onTileClickHandler}
+        ></Carousel>
     }
 
     renderImagesViewer = () => {
-        return <div>Image viewer</div>
+        if (this.props.studies.selected === null) {
+            return null;
+        }
+
+        let selectedInstance = this.props.instances.selected ? this.props.instances.selected : this.props.instances.images[0];
+        return <ImageViewer instance={selectedInstance}></ImageViewer>
     }
 
     render() {

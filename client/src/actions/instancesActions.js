@@ -18,3 +18,10 @@ export const getInstancesForPatientId = (patientId) => (dispatch) => {
         });
     });
 }
+
+export const selectInstance = (id) => (dispatch) => {
+    dispatch({
+        type: types.SELECT_INSTANCE,
+        data: id
+    });
+}

@@ -173,11 +173,19 @@ export default class CornerstoneTile extends React.Component {
     });
   }
 
+  onClickHandler = (event) => {
+    console.log(event, event.currentTarget.dataset.id);
+    if (this.props.onClickHandler) {
+      this.props.onClickHandler(event.currentTarget.dataset.id);
+    }
+  }
+
   render() {
     return (
-      <div>
+      <div
+        onClick={this.onClickHandler}
+        data-id={this.props.imageId}>
         <div
-          id="dicomImage"
           className="viewportElement"
           style={divStyle}
           ref={input => {

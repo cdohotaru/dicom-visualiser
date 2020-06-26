@@ -8,11 +8,13 @@ let initialState = {
 }
 
 export default function instancesReducer(state = initialState, action) {
-    let temp, index;
     switch (action.type) {
         case types.GET_PATIENT_INSTANCES_SUCCESS:
-            const toReturn = { ...state, images: action.data }
+            const toReturn = { ...state, images: action.data, selected: null }
             return toReturn;
+        case types.SELECT_INSTANCE:
+            let selectedInstance = state.images.filter(image => image.ID === action.data)[0];
+            return { ...state, selected: selectedInstance }
         default:
             return state;
     }

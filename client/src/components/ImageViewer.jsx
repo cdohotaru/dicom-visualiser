@@ -32,7 +32,7 @@ const styles = (theme) => ({
     }
 });
 
-export class Carousel extends React.Component {
+export class ImageViewer extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -41,8 +41,14 @@ export class Carousel extends React.Component {
 
     }
 
-    renderOneTile = (instance) => {
+    renderInstance = () => {
         const { classes } = this.props;
+
+        const instance = this.props.instance;
+
+        if (!instance) {
+            return <p>No image</p>;
+        }
 
         return <li
             className={classes.instancesList}
@@ -54,36 +60,21 @@ export class Carousel extends React.Component {
                     <p>Date: {instance.MainDicomTags.InstanceCreationDate}</p>
                     <CornerstoneTile
                         imageId={instance.ID}
-                        onClickHandler={this.props.onClickHandler}
                     ></CornerstoneTile>
                 </div>
             </Paper>
         </li>
     }
 
-    renderTiles = () => {
-        const { classes } = this.props;
-
-        if (!this.props.instances || this.props.instances.length === 0) {
-            return null
-        }
-
-        return <div>
-            <ul className={classes.list}>
-                {this.props.instances.map(instance => this.renderOneTile(instance))}
-            </ul>
-        </div>
-    }
-
     render() {
 
-        console.log("Carousel: ", this.props.instances);
+        console.log("ImageViewer: ", this.props.instances);
 
         return <div >
-            <p><b>Study images</b></p>
-            {this.renderTiles()}
+            <p><b>Selected image</b></p>
+            {this.renderInstance()}
         </div>
     }
 }
 
-export default withStyles(styles)(Carousel);
+export default withStyles(styles)(ImageViewer);
