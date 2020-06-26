@@ -193,11 +193,6 @@ export default class CornerstoneTile extends React.Component {
           }}
         >
           <canvas className="cornerstone-canvas" />
-          <div style={bottomLeftStyle}>Zoom: {this.state.viewport.scale}</div>
-          <div style={bottomRightStyle}>
-            WW/WC: {this.state.viewport.voi.windowWidth} /{" "}
-            {this.state.viewport.voi.windowCenter}
-          </div>
         </div>
       </div>
     );

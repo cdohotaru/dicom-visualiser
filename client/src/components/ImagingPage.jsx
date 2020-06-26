@@ -15,8 +15,8 @@ const styles = () => ({
         flexDirection: "row",
     },
     imageViewerContainer: {
-        minWidth: "500px",
-        minHeight: "500px",
+        minWidth: "1000px",
+        minHeight: "1000px",
         marginLeft: "20px",
     },
     carouselContainer: {
