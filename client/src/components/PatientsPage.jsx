@@ -4,7 +4,6 @@ import { bindActionCreators } from "redux";
 
 import { withStyles } from "@material-ui/core/styles";
 
-import CornerstoneTile from "./CornerstoneTile";
 import PatientsTable from "./PatientsTable";
 
 import * as patientActions from "../actions/patientActions";
@@ -54,7 +53,6 @@ export class PatientsPage extends React.Component {
     }
 
     onStudySelect = (studyId) => {
-        console.log("S id: ", studyId);
         this.setState({
             currentStudy: studyId
         });
@@ -79,9 +77,6 @@ export class PatientsPage extends React.Component {
 
     render() {
         return <div>
-            {/* <div>
-                <CornerstoneTile imageId={"7969c8f3-1ce35009-2ad17439-ba1e5e65-45b53bfb"} />
-            </div> */}
             <div>
                 <PatientsTable
                     data={this.state.patients}

@@ -1,5 +1,4 @@
 import * as types from "../actions/actionTypes";
-import * as constants from "../utils/constants";
 import * as utils from "../utils/utils";
 
 export default function patientsReducer(state = [], action) {

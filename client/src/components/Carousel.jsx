@@ -5,11 +5,7 @@ import Paper from '@material-ui/core/Paper';
 
 import CornerstoneTile from "./CornerstoneTile";
 
-
-import * as patientActions from "../actions/patientActions";
-import * as utils from "../utils/utils";
-
-const styles = (theme) => ({
+const styles = () => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -33,13 +29,6 @@ const styles = (theme) => ({
 });
 
 export class Carousel extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount() {
-
-    }
 
     renderOneTile = (instance) => {
         const { classes } = this.props;
@@ -76,8 +65,6 @@ export class Carousel extends React.Component {
     }
 
     render() {
-
-        console.log("Carousel: ", this.props.instances);
 
         return <div >
             <p><b>Study images</b></p>

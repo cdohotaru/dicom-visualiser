@@ -1,7 +1,7 @@
+import * as constants from "../utils/constants";
+
 export function createImageUri(imageId) {
-    // let imageId = "http://localhost/orthanc/instances/7969c8f3-1ce35009-2ad17439-ba1e5e65-45b53bfb/file";
-    // let imageId = "http://localhost:3001/api/instances/2a86f114-ecf83537-e4f14ab8-43119f54-a2315c2f/file";    
-    let uri = `http://localhost/orthanc/instances/${imageId}/file`;
+    let uri = `http://${constants.orhancIp}/orthanc/instances/${imageId}/file`;
     return "wadouri:" + uri;
 }
 

@@ -5,11 +5,7 @@ import Paper from '@material-ui/core/Paper';
 
 import CornerstoneViewer from "./CornerstoneViewer";
 
-
-import * as patientActions from "../actions/patientActions";
-import * as utils from "../utils/utils";
-
-const styles = (theme) => ({
+const styles = () => ({
     root: {
         display: "flex",
         flexWrap: "wrap",
@@ -36,9 +32,6 @@ const styles = (theme) => ({
 });
 
 export class ImageViewer extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     renderInstance = () => {
         const { classes } = this.props;
@@ -92,7 +85,6 @@ export class ImageViewer extends React.Component {
 
     render() {
         const { classes } = this.props;
-        console.log("ImageViewer: ", this.props.instances);
 
         return <div>
             <p><b>Selected image</b></p>

@@ -28,16 +28,6 @@ const config = {
   }
 };
 
-// maxWebWorkers: navigator.hardwareConcurrency || 1,
-//   startWebWorkersOnDemand: true,
-//   webWorkerTaskPaths: [webWorkerTaskPath],
-//   taskConfiguration: {
-//     decodeTask: {
-//       initializeCodecsOnStartup: false,
-//       usePDFJS: false
-//     }
-//   }
-
 cornerstoneWadoImageLoader.webWorkerManager.initialize(config);
 
 
@@ -48,27 +38,11 @@ const divStyle = {
   color: "white"
 };
 
-const bottomLeftStyle = {
-  bottom: "5px",
-  left: "5px",
-  position: "absolute",
-  color: "white"
-};
-
-const bottomRightStyle = {
-  bottom: "5px",
-  right: "5px",
-  position: "absolute",
-  color: "white"
-};
-
 export default class CornerstoneTile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // stack: props.stack,
       viewport: cornerstone.getDefaultViewport(null, undefined),
-      // imageId: props.stack.imageIds[0],
       imageUri: utils.createImageUri(props.imageId)
     };
   }
@@ -91,28 +65,6 @@ export default class CornerstoneTile extends React.Component {
         cornerstoneTools.pan.activate(element, 2); // Middle Click
         cornerstoneTools.zoom.activate(element, 4); // Right Click
         cornerstoneTools.zoomWheel.activate(element); // Mouse Wheel
-
-
-        // Load the first image in the stack
-        // cornerstone.loadImage(this.state.imageId).then(image => {
-        //   // Display the first image
-        //   cornerstone.displayImage(element, image);
-
-        //   // Add the stack tool state to the enabled element
-        //   const stack = this.props.stack;
-        //   cornerstoneTools.addStackStateManager(element, ["stack"]);
-        //   cornerstoneTools.addToolState(element, "stack", stack);
-
-        //   cornerstoneTools.mouseInput.enable(element);
-        //   cornerstoneTools.mouseWheelInput.enable(element);
-        //   cornerstoneTools.wwwc.activate(element, 1); // ww/wc is the default tool for left mouse button
-        //   cornerstoneTools.pan.activate(element, 2); // pan is the default tool for middle mouse button
-        //   cornerstoneTools.zoom.activate(element, 4); // zoom is the default tool for right mouse button
-        //   cornerstoneTools.zoomWheel.activate(element); // zoom is the default tool for middle mouse wheel
-
-        //   cornerstoneTools.touchInput.enable(element);
-        //   cornerstoneTools.panTouchDrag.activate(element);
-        //   cornerstoneTools.zoomTouchPinch.activate(element);
 
         element.addEventListener(
           "cornerstoneimagerendered",
@@ -142,17 +94,6 @@ export default class CornerstoneTile extends React.Component {
     cornerstone.disable(element);
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  // const stackData = cornerstoneTools.getToolState(this.element, "stack");
-  // const stack = stackData && stackData.data[0] ? stackData.data[0] : {};
-  // stack.currentImageIdIndex = this.state.stack.currentImageIdIndex;
-  // stack.imageIds = this.state.stack.imageIds;
-  // cornerstoneTools.addToolState(this.element, "stack", stack);
-
-  // const imageId = stack.imageIds[stack.currentImageIdIndex];
-  // cornerstoneTools.scrollToIndex(this.element, stack.currentImageIdIndex);
-  // }
-
   onWindowResize = () => {
     cornerstone.resize(this.element);
   }
@@ -174,7 +115,6 @@ export default class CornerstoneTile extends React.Component {
   }
 
   onClickHandler = (event) => {
-    console.log(event, event.currentTarget.dataset.id);
     if (this.props.onClickHandler) {
       this.props.onClickHandler(event.currentTarget.dataset.id);
     }

@@ -54,7 +54,6 @@ export class ImagingPage extends React.Component {
     }
 
     onTileClickHandler = (id) => {
-        console.log("IP: ", id);
         this.props.actions.selectInstance(id);
     }
 
@@ -69,7 +68,6 @@ export class ImagingPage extends React.Component {
         if (this.props.studies.selected === null) {
             return null;
         }
-        console.log("Instances: ", this.props.instances.images);
 
         return <Carousel
             instances={this.props.instances.images}

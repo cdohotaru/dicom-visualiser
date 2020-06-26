@@ -24,17 +24,18 @@ export default function StudyDetails(params) {
     };
 
     if (params.data && params.data.ParentPatient) {
+
         return <div className={classes.root}>
             <div>
                 <div>
                     <p><b>Study Details</b></p>
                     <p>Patient id: {params.data.ParentPatient}</p>
                     <p>Main Dicom Tags:</p>
-                    <p>Accession Number: {params.data.MainDicomTags.AccessionNumber ? params.data.MainDicomTags.AccessionNumber : "mising"}</p>
-                    <p>Institution Name: {params.data.MainDicomTags.InstitutionName ? params.data.MainDicomTags.InstitutionName : "mising"}</p>
-                    <p>Study date: {params.data.MainDicomTags.StudyDate ? params.data.MainDicomTags.StudyDate : "missing"}</p>
-                    <p>Study description: {params.data.MainDicomTags.StudyDescription ? params.data.MainDicomTags.StudyDescription : "missing"}</p>
-                    <p>Study ID: {params.data.MainDicomTags.StudyID ? params.data.MainDicomTags.StudyID : "missing"}</p>
+                    <p>Accession Number: {params.data.MainDicomTags.AccessionNumber ? params.data.MainDicomTags.AccessionNumber : "not set"}</p>
+                    <p>Institution Name: {params.data.MainDicomTags.InstitutionName ? params.data.MainDicomTags.InstitutionName : "not set"}</p>
+                    <p>Study date: {params.data.MainDicomTags.StudyDate ? params.data.MainDicomTags.StudyDate : "not set"}</p>
+                    <p>Study description: {params.data.MainDicomTags.StudyDescription ? params.data.MainDicomTags.StudyDescription : "not set"}</p>
+                    <p>Study ID: {params.data.MainDicomTags.StudyID ? params.data.MainDicomTags.StudyID : "not set"}</p>
                 </div>
                 <div>
                     <Button
