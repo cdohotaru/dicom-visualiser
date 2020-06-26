@@ -14,23 +14,17 @@ const styles = () => ({
     bottomContainer: {
         display: "flex",
         flexDirection: "row",
-        marginTop: "20px"
+        marginTop: "15px"
     },
     imageViewerContainer: {
-        minWidth: "1000px",
-        minHeight: "1000px",
-        marginLeft: "20px",
+        minWidth: "600px",
+        minHeight: "600px",
+        marginLeft: "15px",
     },
     carouselContainer: {
         minWidth: "300px",
-        height: "1000px",
+        height: "1200px",
         overflow: "auto"
-    },
-    runButton: {
-        minWidth: "140px",
-    },
-    marginLeft: {
-        marginLeft: "20px"
     },
     patientDetailsContainer: {
         margin: "0 10px 10px 10px",

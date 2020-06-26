@@ -24,10 +24,10 @@ const styles = (theme) => ({
     },
     viewContainer: {
         display: "flex",
-        flexDirection: "row"
+        flexDirection: "column"
     },
     detailsContainer: {
-        marginLeft: "40px",
+        marginLeft: "0px",
     },
     detailsInnerContainer: {
         margin: "10px",
