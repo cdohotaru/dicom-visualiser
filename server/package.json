@@ -22,7 +22,7 @@
         "esm": "^3.2.25",
         "express": "^4.17.1",
         "express-convention-routes": "^1.0.6",
-        "moment": "^2.27.0",
+        "moment": "^2.29.2",
         "regenerator-runtime": "^0.13.5",
         "superagent": "^5.2.2",
         "typedi": "^0.8.0",
