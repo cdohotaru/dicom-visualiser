@@ -20,7 +20,7 @@
         "crypto-js": "^4.0.0",
         "dotenv": "8.2.0",
         "esm": "^3.2.25",
-        "express": "^4.17.1",
+        "express": "^4.17.3",
         "express-convention-routes": "^1.0.6",
         "moment": "^2.27.0",
         "regenerator-runtime": "^0.13.5",
